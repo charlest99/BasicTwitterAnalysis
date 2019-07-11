@@ -24,7 +24,7 @@ def createTweetsDf(users, api):
 	for user in users:
 	    tweets = api.user_timeline(screen_name=user, count=200)
 	    data = pd.DataFrame(data=[tweet.text for tweet in tweets], columns=['Tweets'])
-	    data['username'] = politician
+	    data['username'] = user
 	    data['len']  = np.array([len(tweet.text) for tweet in tweets])
 	    data['Likes']  = np.array([tweet.favorite_count for tweet in tweets])
 	    data['RTs']    = np.array([tweet.retweet_count for tweet in tweets])
