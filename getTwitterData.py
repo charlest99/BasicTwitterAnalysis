@@ -72,7 +72,7 @@ def getSummaries(tweetDf, api):
 	    avgRTs.append(tempDf['RTs'].mean())
 	    avgLen.append(tempDf['len'].mean())
 	    followerCount.append(api.get_user(user).followers_count)
-	percs = pd.DataFrame(zip(users, pos, neu, neg, avgLikes, avgRTs, avgLen, followerCount), columns = ['username', '%pos', '%neu', '%neg', 'avgLikes', 'avgRTs', 'avgLen','followers'])
+	percs = pd.DataFrame(list(zip(users, pos, neu, neg, avgLikes, avgRTs, avgLen, followerCount)), columns = ['username', '%pos', '%neu', '%neg', 'avgLikes', 'avgRTs', 'avgLen','followers'])
 	percs['LikesPerFollower'] = percs['avgLikes']/percs['followers']
 	percs['RTsPerFollower'] = percs['avgRTs']/percs['followers']
 
